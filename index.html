@@ -33,7 +33,6 @@
             background-clip: text;
         }
         
-        /* Enhanced Card Hover Effects */
         .feature-card { 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
         }
@@ -44,25 +43,6 @@
         }
         .feature-card:hover h3 { color: #fbbf24; }
         
-        .unit-card:hover { 
-            border-color: rgba(245, 158, 11, 0.5); 
-            transform: translateY(-4px);
-        }
-        .unit-card:hover h3 { color: #fbbf24; }
-        
-        .security-card:hover { 
-            border-color: rgba(245, 158, 11, 0.5); 
-            transform: scale(1.02); 
-        }
-        .security-card:hover h3 { color: #fbbf24; }
-        
-        .why-card:hover { 
-            border-color: rgba(245, 158, 11, 0.5); 
-            transform: scale(1.02); 
-        }
-        .why-card:hover h3 { color: #fbbf24; }
-        
-        /* Pricing Card Styles */
         .pricing-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -102,7 +82,6 @@
         .hamburger-line { transition: all 0.3s ease; }
         .mobile-menu { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease; }
         .mobile-menu.open { max-height: 400px; opacity: 1; }
-        .counter-value { font-variant-numeric: tabular-nums; }
         
         html { scroll-behavior: smooth; }
         
@@ -111,24 +90,11 @@
         ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #d97706; }
 
-        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-up { animation: fadeInUp 0.7s ease-out forwards; }
-        
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.15); }
-            50% { box-shadow: 0 0 50px rgba(245, 158, 11, 0.25); }
-        }
-        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-float { animation: float 4s ease-in-out infinite; }
 
         @keyframes shimmer {
             0% { background-position: -200% center; }
@@ -149,7 +115,6 @@
         }
         .toast.show { opacity: 1; pointer-events: auto; }
 
-        /* Screenshot Gallery Enhancements */
         .screenshot-container {
             position: relative;
             overflow: hidden;
@@ -158,11 +123,8 @@
         .screenshot-container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 1px border rgba(245, 158, 11, 0.2);
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid rgba(245, 158, 11, 0.2);
             border-radius: 1rem;
             pointer-events: none;
             z-index: 10;
@@ -171,32 +133,18 @@
         .screenshot-img {
             transition: transform 0.5s ease, opacity 0.3s ease;
         }
-        .screenshot-img:hover {
-            transform: scale(1.02);
-        }
 
-        /* Countdown Timer */
-        .countdown-box {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05));
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-
-        /* Testimonial Card */
-        .testimonial-card {
-            transition: all 0.3s ease;
-        }
+        .testimonial-card { transition: all 0.3s ease; }
         .testimonial-card:hover {
             transform: translateY(-5px);
             border-color: rgba(245, 158, 11, 0.4);
         }
 
-        /* Guarantee Badge */
         .guarantee-badge {
             background: linear-gradient(135deg, #10b981, #059669);
             box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
 
-        /* Discount Badge */
         .discount-badge {
             background: linear-gradient(135deg, #ef4444, #dc2626);
             animation: pulse 2s infinite;
@@ -206,13 +154,8 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Lightbox */
         .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             display: flex;
@@ -232,6 +175,28 @@
             border-radius: 1rem;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
+
+        .countdown-digit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2rem;
+            height: 2rem;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 0.5rem;
+            font-weight: 800;
+            color: #f59e0b;
+            font-size: 0.9rem;
+            margin: 0 2px;
+        }
+        @media (min-width: 640px) {
+            .countdown-digit {
+                min-width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white font-cairo">
@@ -239,11 +204,13 @@
     <!-- Promotional Banner -->
     <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-900 py-3 px-4 text-center relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-        <p class="font-bold text-sm sm:text-base relative z-10">
-            عرض خاص لفترة محدودة — خصم 60% على الاشتراك السنوي 
-            <span class="mx-2">|</span>
-            <span class="text-slate-800">انتهي في:</span>
-            <span id="countdown" class="font-extrabold text-slate-900">00:00:00</span>
+        <p class="font-bold text-sm sm:text-base relative z-10 flex flex-wrap items-center justify-center gap-2">
+            <span>عرض خاص لفترة محدودة — خصم 60% على الاشتراك السنوي</span>
+            <span class="hidden sm:inline">|</span>
+            <span class="flex items-center gap-1">
+                ينتهي خلال:
+                <span id="countdown" class="flex items-center"></span>
+            </span>
         </p>
     </div>
 
@@ -264,12 +231,11 @@
                     <a href="#contact" class="text-slate-300 hover:text-amber-400 transition-colors text-sm font-medium">تواصل معنا</a>
                 </div>
 
-                <!-- تم تعديل هذا الزر -->
-                <a href="https://drive.google.com/file/d/1GLE8JVmPJ9lIgA-xh9siLIpZsuoQmZwi/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2 rounded-lg transition-all hover:scale-105 text-sm shadow-lg shadow-amber-500/25">
-                    تحميل مجاني
+                <a href="#download" class="hidden md:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2 rounded-lg transition-all hover:scale-105 text-sm shadow-lg shadow-amber-500/25">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    تحميل النظام
                 </a>
 
-                <!-- Mobile Hamburger -->
                 <button id="hamburgerBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="فتح القائمة">
                     <span id="line1" class="hamburger-line block w-6 h-0.5 bg-white"></span>
                     <span id="line2" class="hamburger-line block w-6 h-0.5 bg-white"></span>
@@ -278,7 +244,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobileMenu" class="mobile-menu md:hidden">
             <div class="px-4 pb-4 flex flex-col gap-3 bg-slate-900/95 backdrop-blur-md">
                 <a href="#features" class="mobile-link text-slate-300 hover:text-amber-400 transition-colors py-2 border-b border-slate-700/50 text-sm font-medium">المميزات</a>
@@ -286,8 +251,7 @@
                 <a href="#pricing" class="mobile-link text-slate-300 hover:text-amber-400 transition-colors py-2 border-b border-slate-700/50 text-sm font-medium">الأسعار</a>
                 <a href="#testimonials" class="mobile-link text-slate-300 hover:text-amber-400 transition-colors py-2 border-b border-slate-700/50 text-sm font-medium">آراء العملاء</a>
                 <a href="#contact" class="mobile-link text-slate-300 hover:text-amber-400 transition-colors py-2 border-b border-slate-700/50 text-sm font-medium">تواصل معنا</a>
-                <!-- تم تعديل هذا الزر -->
-                <a href="https://drive.google.com/file/d/1GLE8JVmPJ9lIgA-xh9siLIpZsuoQmZwi/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="mobile-link bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2.5 rounded-lg text-center text-sm mt-2">تحميل مجاني</a>
+                <a href="#download" class="mobile-link bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2.5 rounded-lg text-center text-sm mt-2">تحميل النظام</a>
             </div>
         </div>
     </nav>
@@ -299,7 +263,6 @@
         
         <div class="max-w-5xl mx-auto relative z-10">
             <div class="text-center">
-                <!-- Trust Badges -->
                 <div class="flex flex-wrap justify-center gap-3 mb-8">
                     <span class="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-1.5 text-green-400 text-xs font-medium">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
@@ -310,7 +273,7 @@
                         دعم فني 24/7
                     </span>
                     <span class="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5 text-amber-400 text-xs font-medium">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812z" clip-rule="evenodd"/></svg>
                         +500 فندق يستخدمون النظام
                     </span>
                 </div>
@@ -324,12 +287,10 @@
                     الحل الشامل لإدارة فندقك بكفاءة عالية — من الحجوزات والغرف إلى المدفوعات والتقارير المالية في مكان واحد
                 </p>
 
-                <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                    <!-- تم تعديل هذا الزر -->
-                    <a href="https://drive.google.com/file/d/1GLE8JVmPJ9lIgA-xh9siLIpZsuoQmZwi/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-primary bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-amber-500/25 flex items-center gap-2">
+                    <a href="#download" class="btn-primary bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-amber-500/25 flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                        تحميل النسخة المجانية
+                        تحميل النظام
                     </a>
                     <a href="#screenshots" class="border border-slate-600 hover:border-amber-500 text-slate-300 hover:text-amber-400 font-medium px-8 py-4 rounded-xl transition-all text-lg flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
@@ -337,7 +298,6 @@
                     </a>
                 </div>
 
-                <!-- Stats -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
                     <div class="text-center p-4 rounded-xl bg-slate-800/30 border border-slate-700/30">
                         <div class="text-3xl sm:text-4xl font-extrabold stat-gradient">500+</div>
@@ -404,7 +364,7 @@
         </div>
     </section>
 
-    <!-- Screenshots Section - Enhanced -->
+    <!-- Screenshots Section -->
     <section id="screenshots" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
@@ -413,9 +373,7 @@
                 <p class="text-slate-400 text-lg">اضغط على أي صورة لعرضها بحجم أكبر</p>
             </div>
 
-            <!-- Main Screenshot Display -->
             <div class="screenshot-container bg-slate-900 rounded-2xl overflow-hidden shadow-2xl mb-8 cursor-pointer" onclick="openLightbox()">
-                <!-- Window Header -->
                 <div class="bg-slate-800 px-4 py-3 flex items-center gap-3 border-b border-slate-700">
                     <div class="flex gap-2">
                         <span class="w-3 h-3 rounded-full bg-red-500"></span>
@@ -428,11 +386,8 @@
                     <div class="text-slate-500 text-xs">اضغط للتكبير</div>
                 </div>
                 
-                <!-- Image Container -->
                 <div class="relative aspect-video bg-slate-950">
                     <img id="mainScreenshot" src="images/login.png" alt="صورة النظام" class="screenshot-img w-full h-full object-contain">
-                    
-                    <!-- Overlay Info -->
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 via-slate-900/90 to-transparent p-6">
                         <h3 id="screenshotTitle" class="text-2xl font-bold text-white">تسجيل الدخول</h3>
                         <p id="screenshotDesc" class="text-slate-300 text-sm mt-1">واجهة تسجيل دخول آمنة وجذابة</p>
@@ -440,43 +395,33 @@
                 </div>
             </div>
 
-            <!-- Screenshot Thumbnails Grid -->
             <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-9 gap-3">
                 <button onclick="changeScreenshot(0)" class="screenshot-btn active group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/login.png" alt="تسجيل الدخول" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">تسجيل الدخول</span>
                 </button>
                 <button onclick="changeScreenshot(1)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/Control.png" alt="لوحة التحكم" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">لوحة التحكم</span>
                 </button>
                 <button onclick="changeScreenshot(2)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/rooms.png" alt="إدارة الغرف" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">إدارة الغرف</span>
                 </button>
                 <button onclick="changeScreenshot(3)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/reg.png" alt="الحجوزات" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">الحجوزات</span>
                 </button>
                 <button onclick="changeScreenshot(4)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/clients.png" alt="العملاء" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">العملاء</span>
                 </button>
                 <button onclick="changeScreenshot(5)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/payment.png" alt="المدفوعات" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">المدفوعات</span>
                 </button>
                 <button onclick="changeScreenshot(6)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/reports.png" alt="التقارير" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">التقارير</span>
                 </button>
                 <button onclick="changeScreenshot(7)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/setting.png" alt="الإعدادات" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">الإعدادات</span>
                 </button>
                 <button onclick="changeScreenshot(8)" class="screenshot-btn group relative overflow-hidden rounded-xl aspect-video bg-slate-800 border-2 border-transparent hover:border-amber-500 transition-all">
                     <img src="images/ad.png" alt="الديون" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                    <span class="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">الديون</span>
                 </button>
             </div>
         </div>
@@ -484,13 +429,13 @@
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <button class="absolute top-4 right-4 text-white bg-slate-800 hover:bg-slate-700 rounded-full p-2 z-10" onclick="closeLightbox()">
+        <button class="absolute top-4 right-4 text-white bg-slate-800 hover:bg-slate-700 rounded-full p-2 z-10">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
         <img id="lightboxImg" src="" alt="صورة مكبرة">
     </div>
 
-    <!-- Pricing Section - Updated -->
+    <!-- Pricing Section -->
     <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-14">
@@ -500,7 +445,6 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <!-- Plan 1 - Free Trial -->
                 <div class="pricing-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 lg:p-8">
                     <div class="text-center mb-6">
                         <h3 class="text-xl font-bold mb-2">النسخة التجريبية</h3>
@@ -515,11 +459,9 @@
                         <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="text-green-500">✓</span>بدون أي قيود</li>
                         <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="text-green-500">✓</span>لا يتطلب بطاقة دفع</li>
                     </ul>
-                    <!-- تم تعديل هذا الزر -->
-                    <a href="https://drive.google.com/file/d/1GLE8JVmPJ9lIgA-xh9siLIpZsuoQmZwi/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="block text-center py-3 rounded-xl font-bold text-sm bg-slate-700 hover:bg-slate-600 text-white transition">ابدأ الآن مجاناً</a>
+                    <a href="#download" class="block text-center py-3 rounded-xl font-bold text-sm bg-slate-700 hover:bg-slate-600 text-white transition">تحميل النظام</a>
                 </div>
 
-                <!-- Plan 2 - Monthly -->
                 <div class="pricing-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 lg:p-8">
                     <div class="text-center mb-6">
                         <h3 class="text-xl font-bold mb-2">الترخيص الشهري</h3>
@@ -538,9 +480,7 @@
                     <a href="#contact" class="block text-center py-3 rounded-xl font-bold text-sm bg-slate-700 hover:bg-slate-600 text-white transition">اشترك الآن</a>
                 </div>
 
-                <!-- Plan 3 - Annual (Popular) -->
                 <div class="pricing-card popular rounded-2xl p-6 lg:p-8 relative overflow-hidden">
-                    <!-- Discount Badge -->
                     <div class="discount-badge absolute top-4 left-4 text-white text-xs font-bold px-3 py-1 rounded-full">
                         خصم 60%
                     </div>
@@ -560,14 +500,12 @@
                         <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="text-green-500">✓</span>تحديثات مجانية مدى الحياة</li>
                         <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="text-green-500">✓</span>دعم فني أولوية 24/7</li>
                         <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="text-green-500">✓</span>نسخ احتياطي تلقائي</li>
-                        <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="text-green-500">✓</span>تقارير متقدمة</li>
                         <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="text-green-500">✓</span>ضمان استرداد 30 يوم</li>
                     </ul>
                     <a href="#contact" class="block text-center py-3 rounded-xl font-bold text-sm bg-amber-500 hover:bg-amber-600 text-slate-900 transition shadow-lg shadow-amber-500/25">اشترك الآن</a>
                 </div>
             </div>
 
-            <!-- Guarantee Badge -->
             <div class="mt-12 text-center">
                 <div class="guarantee-badge inline-flex items-center gap-3 text-white px-6 py-3 rounded-xl">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
@@ -592,9 +530,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="testimonial-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
                     <div class="flex items-center gap-1 mb-4">
-                        <span class="text-amber-400">★★★★★</span>
+                        <span class="text-amber-400 text-lg">★★★★★</span>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-4">"نظام رائع وسهل الاستخدام. وفر علينا الكثير من الوقت والجهد في إدارة الحجوزات والمدفوعات. الدعم الفني ممتاز وسريع الاستجابة."</p>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">"نظام رائع وسهل الاستخدام. وفر علينا الكثير من الوقت والجهد في إدارة الحجوزات والمدفوعات. الدعم الفني ممتاز."</p>
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-amber-500/20 rounded-full flex items-center justify-center text-amber-400 font-bold">م</div>
                         <div>
@@ -606,7 +544,7 @@
                 
                 <div class="testimonial-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
                     <div class="flex items-center gap-1 mb-4">
-                        <span class="text-amber-400">★★★★★</span>
+                        <span class="text-amber-400 text-lg">★★★★★</span>
                     </div>
                     <p class="text-slate-300 text-sm leading-relaxed mb-4">"التقارير المالية دقيقة وشاملة. أصبح بإمكاني متابعة إيرادات الفندق بسهولة. أنصح به بشدة لكل ملاك الفنادق."</p>
                     <div class="flex items-center gap-3">
@@ -620,7 +558,7 @@
                 
                 <div class="testimonial-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
                     <div class="flex items-center gap-1 mb-4">
-                        <span class="text-amber-400">★★★★★</span>
+                        <span class="text-amber-400 text-lg">★★★★★</span>
                     </div>
                     <p class="text-slate-300 text-sm leading-relaxed mb-4">"انتقلت من نظام ورقي إلى هذا النظام وكانت نقلة نوعية. كل شيء منظم ومتاح بنقرة واحدة. شكراً للفريق المميز."</p>
                     <div class="flex items-center gap-3">
@@ -639,7 +577,7 @@
     <section id="download" class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center">
             <span class="inline-block bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4">ابدأ الآن</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">حمّل النسخة التجريبية مجاناً</h2>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">حمّل النظام الآن</h2>
             <p class="text-slate-400 text-lg mb-10">جرّب النظام مجاناً لمدة 7 أيام مع جميع المميزات — بدون بطاقة دفع</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -666,10 +604,9 @@
                 </div>
             </div>
 
-            <!-- تم تعديل هذا الزر -->
             <a href="https://drive.google.com/file/d/1GLE8JVmPJ9lIgA-xh9siLIpZsuoQmZwi/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-primary bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-12 py-4 rounded-xl text-lg shadow-lg shadow-amber-500/25 inline-flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                تحميل النسخة التجريبية (13.6 MB)
+                تحميل النظام (13.6 MB)
             </a>
         </div>
     </section>
@@ -684,7 +621,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Contact Info -->
                 <div class="space-y-6">
                     <div class="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
                         <h3 class="font-bold text-lg mb-4 text-amber-400">معلومات التواصل</h3>
@@ -721,7 +657,6 @@
                     </div>
                 </div>
 
-                <!-- Contact Form -->
                 <div class="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
                     <h3 class="font-bold text-lg mb-6 text-amber-400">أرسل لنا رسالة</h3>
                     <form id="contactForm" class="space-y-4">
@@ -774,7 +709,7 @@
     <!-- JavaScript -->
     <script>
         // ─── Screenshot Data ───
-        const  = images[
+        const images = [
             { file: 'images/login.png', title: 'تسجيل الدخول', desc: 'واجهة تسجيل دخول آمنة وجذابة مع نظام حماية متقدم' },
             { file: 'images/Control.png', title: 'لوحة التحكم', desc: 'إحصائيات فورية وشاملة عن حالة الفندق' },
             { file: 'images/rooms.png', title: 'إدارة الغرف', desc: 'إدارة كاملة لجميع الغرف مع تصنيف وحالة كل غرفة' },
@@ -785,9 +720,9 @@
             { file: 'images/setting.png', title: 'الإعدادات', desc: 'إعدادات النظام والنسخ الاحتياطي' },
             { file: 'images/ad.png', title: 'الديون', desc: 'إدارة كاملة للديون والمطالبات' }
         ];
+        
         let activeScreenshot = 0;
 
-        // Change screenshot
         function changeScreenshot(index) {
             activeScreenshot = index;
             
@@ -809,7 +744,6 @@
             if(windowTitle) windowTitle.textContent = "نظام إدارة الفنادق — " + images[index].title;
             if(lightboxImg) lightboxImg.src = images[index].file;
 
-            // Update active button
             document.querySelectorAll('.screenshot-btn').forEach(function(btn, i) {
                 btn.classList.toggle('active', i === index);
                 if (i === index) {
@@ -820,7 +754,6 @@
             });
         }
 
-        // Lightbox functions
         function openLightbox() {
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -831,11 +764,8 @@
             document.body.style.overflow = '';
         }
 
-        // Close lightbox with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
+            if (e.key === 'Escape') closeLightbox();
         });
 
         // ─── Mobile Menu Toggle ───
@@ -861,7 +791,6 @@
             }
         });
 
-        // Close mobile menu on link click
         document.querySelectorAll('.mobile-link').forEach(function(link) {
             link.addEventListener('click', function() {
                 menuOpen = false;
@@ -883,14 +812,17 @@
             }, 4000);
         });
 
-        // ─── Countdown Timer ───
+        // ─── Countdown Timer (تاريخ ثابت - بعد 30 يوم) ───
         function updateCountdown() {
-            const endTime = new Date();
-            endTime.setDate(endTime.getDate() + 3);
-            endTime.setHours(23, 59, 59);
+            // تاريخ الانتهاء: بعد 30 يوم من الآن
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 30);
+            endDate.setHours(23, 59, 59, 999);
             
             const now = new Date();
-            const diff = endTime - now;
+            const diff = endDate - now;
+            
+            const countdownEl = document.getElementById('countdown');
             
             if (diff > 0) {
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -898,8 +830,17 @@
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
                 
-                document.getElementById('countdown').textContent = 
-                    `${days} يوم ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                countdownEl.innerHTML = `
+                    <span class="countdown-digit">${days}</span>
+                    <span class="text-slate-800 font-bold mx-1">يوم</span>
+                    <span class="countdown-digit">${hours.toString().padStart(2, '0')}</span>
+                    <span class="text-slate-800">:</span>
+                    <span class="countdown-digit">${minutes.toString().padStart(2, '0')}</span>
+                    <span class="text-slate-800">:</span>
+                    <span class="countdown-digit">${seconds.toString().padStart(2, '0')}</span>
+                `;
+            } else {
+                countdownEl.innerHTML = '<span class="text-red-800 font-bold">انتهى العرض!</span>';
             }
         }
         
